@@ -1,0 +1,7 @@
+<h2>Olympic games app</h2>
+<hr />
+@for (ol of olympics$ | async; track ol.id) {
+  {{ ol.country }}
+}
+<h1>{{ (olympics$ | async) }} data loaded</h1>
+<h1>{{ (olympic$ | async)?.country }} try 1 country</h1>

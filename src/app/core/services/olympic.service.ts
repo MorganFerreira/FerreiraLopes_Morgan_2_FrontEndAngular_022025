@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { olympic } from '../models/Olympic';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class OlympicService implements OnInit{
   }
 
   loadInitialData() {
-    return this.http.get<olympic>(this.olympicUrl).pipe(
+    return this.http.get<olympic[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
         // TODO: improve error handling
@@ -32,5 +32,11 @@ export class OlympicService implements OnInit{
 
   getOlympics() {
     return this.olympics$.asObservable();
+  }
+
+  getOlympicById(olympicId: number): Observable<olympic> {
+    return this.olympics$.asObservable().pipe(
+      map(tabOl => tabOl.find(((ol: olympic) => ol.id === olympicId)
+    )))
   }
 }
