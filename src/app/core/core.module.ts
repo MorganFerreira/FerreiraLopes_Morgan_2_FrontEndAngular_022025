@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { Resolvers } from './resolvers/resolvers';
+import { OlympicService } from './services/olympic.service';
 
 
 
@@ -18,5 +20,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   exports: [
     HeaderComponent,
   ],
+  providers: [
+    OlympicService,
+    Resolvers
+  ]
 })
 export class CoreModule { }

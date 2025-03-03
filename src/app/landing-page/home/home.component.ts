@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable, of, tap } from 'rxjs';
 import { olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -12,10 +13,10 @@ export class HomeComponent implements OnInit {
   public olympics$!: Observable<olympic[]>;
   public olympic$!: Observable<olympic>;
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
-    this.olympic$ = this.olympicService.getOlympicById(1);
+    this.olympics$ = this.route.data.pipe(map(data => data['olympics']));
+    this.olympic$ = this.route.data.pipe(map(data => data['olympics'][0]));
   }
 }
