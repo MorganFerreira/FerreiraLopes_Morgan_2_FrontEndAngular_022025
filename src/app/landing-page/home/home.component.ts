@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, of, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { olympic } from 'src/app/core/models/Olympic';
-import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
   selector: 'app-home',
@@ -19,4 +18,5 @@ export class HomeComponent implements OnInit {
     this.olympics$ = this.route.data.pipe(map(data => data['olympics']));
     this.olympic$ = this.route.data.pipe(map(data => data['olympics'][0]));
   }
+
 }
