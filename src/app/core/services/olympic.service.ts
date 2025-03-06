@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { olympic } from '../models/Olympic';
 
 @Injectable({
@@ -15,10 +15,12 @@ export class OlympicService {
     return this.http.get<olympic[]>(this.olympicUrl);
   }
 
-  // getOlympicById(olympicId: number): Observable<olympic> {
-  //   return this.olympics$.pipe(
-  //     map(tabOl => tabOl.find((ol: olympic) => ol.id === olympicId)),
-  //     filter((olympic): olympic is olympic => olympic !== undefined)
-  //   );
-  // }
+  calculateTotalMedals(olympic: olympic): number {
+    return olympic.participations.reduce((acc, participation) => acc + participation.medalsCount, 0);
+  }
+
+  getOlympicByCountry(olympicCountry: string): Observable<olympic> {
+    return this.getOlympics().pipe(
+      map(olympics => olympics.find(olympic => olympic.country === olympicCountry)!))
+  }
 }

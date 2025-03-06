@@ -1,12 +1,19 @@
-<div class="mat-card-content">
-  Olympic Glory est votre destination ultime pour explorer et célébrer les réalisations
-  des pays du monde entier aux Jeux Olympiques. Notre site web offre une plateforme interactive
-  et informative pour les passionnés de sport, les historiens et les curieux qui souhaitent en
-  savoir plus sur les performances olympiques des différentes nations. 
+<div class="mat-card-container">
+  <mat-card>
+    <mat-card-content>
+      Olympic Glory est votre destination ultime pour explorer et célébrer les réalisations
+      des pays du monde entier aux Jeux Olympiques. Notre site web offre une plateforme interactive
+      et informative pour les passionnés de sport, les historiens et les curieux qui souhaitent en
+      savoir plus sur les performances olympiques des différentes nations.
+    </mat-card-content>
+  </mat-card>
 </div>
 
-<!-- @for (ol of olympics$ | async; track ol.id) {
-  {{ ol.country }}
-}
-<h1>{{ (olympics$ | async) }} data loaded</h1>
-<h1>{{ (olympic$ | async)?.country }} try 1 country</h1> -->
+<div class="canvas-container">
+  <canvas baseChart
+    [datasets]="pieChartData.datasets"
+    [labels]="pieChartData.labels"
+    [type]="pieChartType"
+    (chartClick)="onChartClick($event)">
+  </canvas>
+</div>

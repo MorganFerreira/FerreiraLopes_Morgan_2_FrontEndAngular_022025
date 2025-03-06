@@ -1,1 +1,8 @@
-<h2>la vue détail</h2>
+<div class="canvas-container">
+    <canvas baseChart
+      [datasets]="lineChartData.datasets"
+      [labels]="lineChartData.labels"
+      [type]="lineChartType"
+      [options]="lineChartOptions">
+    </canvas>
+</div>
