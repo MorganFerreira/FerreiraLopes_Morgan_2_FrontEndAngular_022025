@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChartData, ChartOptions, ChartType } from 'chart.js';
+import { ChartData, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
@@ -47,7 +47,7 @@ export class DetailViewComponent {
       this.totalAthleteCount = olympic.participations.reduce((acc, participation) => acc + participation.athleteCount, 0);
       this.lineChartData.labels = olympic.participations.map(participation => participation.year.toString());
       this.lineChartData.datasets = [
-        { data: olympic.participations.map(participation => participation.medalsCount) },
+        {data: olympic.participations.map(participation => participation.medalsCount)},
       ];
     });
   }
