@@ -1,12 +1,40 @@
-<div class="mat-card-container">
-  <mat-card>
-    <mat-card-content>
-      Olympic Glory est votre destination ultime pour explorer et célébrer les réalisations
-      des pays du monde entier aux Jeux Olympiques. Notre site web offre une plateforme interactive
-      et informative pour les passionnés de sport, les historiens et les curieux qui souhaitent en
-      savoir plus sur les performances olympiques des différentes nations.
-    </mat-card-content>
-  </mat-card>
+<div class="cards-container">
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        Olympic Glory est votre destination ultime pour explorer et célébrer les réalisations
+        des pays du monde entier aux Jeux Olympiques. Notre site web offre une plateforme interactive
+        et informative pour les passionnés de sport, les historiens et les curieux qui souhaitent en
+        savoir plus sur les performances olympiques des différentes nations.
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="title-chart-card">
+  <mat-card-content>
+    <h2>Médailles par pays :</h2>
+  </mat-card-content>
+</div>
+
+<div class="cards-container">
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>Nombre de jeux olympiques :</h2>
+        <h2>{{ totalUniqueYears }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>Nombre de pays participants :</h2>
+        <h2>{{ numberOfCountry }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
 
 <div class="canvas-container">

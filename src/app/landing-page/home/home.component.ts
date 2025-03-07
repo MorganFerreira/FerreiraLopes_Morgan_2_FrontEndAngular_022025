@@ -16,6 +16,8 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 })
 export class HomeComponent implements OnInit {
   public olympics$!: Observable<olympic[]>;
+  public totalUniqueYears!: number;
+  public numberOfCountry!: number;
   public pieChartType: ChartType = 'pie';
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: [],
@@ -32,6 +34,8 @@ export class HomeComponent implements OnInit {
       map(data => data['olympics'])
     );
     this.olympics$.subscribe(olympics => {
+      this.totalUniqueYears = this.olympicService.getTotalUniqueYears(olympics);
+      this.numberOfCountry = olympics.length;
       this.pieChartData.labels = olympics.map(olympic => olympic.country);
       this.pieChartData.datasets = [
         { data: olympics.map(olympic => this.olympicService.calculateTotalMedals(olympic)) },

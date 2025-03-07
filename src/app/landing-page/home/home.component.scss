@@ -1,14 +1,34 @@
-.mat-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20%;
-}
-  
 mat-card {
     max-width: 600px;
     width: 100%;
     text-align: center;
+}
+
+.title-chart-card {
+    background-color: rgb(4, 131, 143);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    width: fit-content;
+}
+
+.title-chart-card mat-card-content {
+    padding-top: 1px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.legend-chart-card {
+    border: 3px solid rgb(4, 131, 143);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .canvas-container {

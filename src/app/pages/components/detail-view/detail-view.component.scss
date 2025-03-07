@@ -4,7 +4,58 @@
     align-items: center;
     height: 20%;
 }
-  
+
+.back-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button-container button {
+    background-color: rgb(4, 131, 143);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.back-button-container {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.title-chart-card {
+    background-color: rgb(4, 131, 143);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    width: fit-content;
+}
+
+.title-chart-card mat-card-content {
+    padding-top: 1px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.legend-chart-card {
+    border: 3px solid rgb(4, 131, 143);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 mat-card {
     max-width: 600px;
     width: 100%;
@@ -15,12 +66,11 @@ mat-card {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
   
 canvas {
     max-width: 800px;
-    max-height: 800px;
+    max-height: 400px;
     width: 100%;
     height: auto;
 }

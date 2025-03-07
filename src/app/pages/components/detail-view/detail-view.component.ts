@@ -15,9 +15,11 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrl: './detail-view.component.scss'
 })
 export class DetailViewComponent {
-  @Input() olympics$!: Observable<olympic[]>;
   public country!: string;
   public olympic$!: Observable<olympic>;
+  public participationNumber!: number;
+  public totalMedalsCount!: number;
+  public totalAthleteCount!: number;
   public lineChartType: 'line' = 'line';
   public lineChartData: ChartData<'line', number[], string | string[]> = {
     labels: [],
@@ -25,7 +27,10 @@ export class DetailViewComponent {
   };
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
-    scales: {y: {beginAtZero: true}},
+    scales: {
+      x: {title: {display: true, text: 'Année'}},
+      y: {title: {display: true, text: 'Nombre de médailles'}}
+    },
     plugins: {legend: {display: false}}
   };
 
@@ -37,10 +42,17 @@ export class DetailViewComponent {
     this.country = this.route.snapshot.paramMap.get('country')!;
     this.olympic$ = this.olympicService.getOlympicByCountry(this.country);
     this.olympic$.subscribe(olympic => {
+      this.participationNumber = olympic.participations.length;
+      this.totalMedalsCount = this.olympicService.calculateTotalMedals(olympic);
+      this.totalAthleteCount = olympic.participations.reduce((acc, participation) => acc + participation.athleteCount, 0);
       this.lineChartData.labels = olympic.participations.map(participation => participation.year.toString());
       this.lineChartData.datasets = [
         { data: olympic.participations.map(participation => participation.medalsCount) },
       ];
     });
+  }
+  
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 }

@@ -1,3 +1,43 @@
+
+<div class="back-button-container">
+  <button mat-raised-button color="primary" (click)="goBack()">Retour</button>
+</div>
+
+<div class="title-chart-card">
+  <mat-card-content>
+    <h2>{{country}} :</h2>
+  </mat-card-content>
+</div>
+
+<div class="cards-container">
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>Nombre de participations :</h2>
+        <h2>{{ participationNumber }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>Total de médailles obtenues :</h2>
+        <h2>{{ totalMedalsCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="legend-chart-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>Total d'athlètes présentés :</h2>
+        <h2>{{ totalAthleteCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
 <div class="canvas-container">
     <canvas baseChart
       [datasets]="lineChartData.datasets"

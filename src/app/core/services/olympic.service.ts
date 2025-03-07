@@ -23,4 +23,14 @@ export class OlympicService {
     return this.getOlympics().pipe(
       map(olympics => olympics.find(olympic => olympic.country === olympicCountry)!))
   }
+
+  getTotalUniqueYears(olympics: olympic[]): number {
+    const yearsSet = new Set<number>();
+    olympics.forEach(olympic => {
+      olympic.participations.forEach(participation => {
+        yearsSet.add(participation.year);
+      });
+    });
+    return yearsSet.size;
+  }
 }
